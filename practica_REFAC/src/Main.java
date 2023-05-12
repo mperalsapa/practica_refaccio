@@ -1,33 +1,40 @@
-import java.io.File;
-import java.util.List;
+//REFACT: esborrats imports que no s'utilitzen
+//import java.io.File;
+//import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        String p = "Proves";
+//        REFACT: esborrada variable no utilitzada
+//        String p = "Proves";
 
         int opcio;
         do {
             System.out.println("1. ");
             System.out.println("2. ");
             System.out.println("3. ");
-            System.out.println("4. ");
-            System.out.println("5. ");
+//            REFACTOR: esborrades opcions que no existeixen.
+//            System.out.println("4. ");
+//            System.out.println("5. ");
             System.out.println("0. Acabar");
 
             opcio = scan.nextInt();
             scan.nextLine();
             switch (opcio) {
                 case 1:
-                    System.out.println("intro: ");
+                    System.out.println("Primer numero: ");
                     int num1 = scan.nextInt();
-                    System.out.println("intro: ");
+                    System.out.println("Segon numero: ");
                     int num2 = scan.nextInt();
                     if (max(num1,num2)) {
-                        System.out.println("aaa");
+                        System.out.println("El primer numero es mes gran que el segon");
                     }
-                    else System.out.println("bbb");
+//                    REFACT: afegides claus ({}) per donar consistencia al codi
+//                    else System.out.println("bbb");
+                    else {
+                        System.out.println("El segon numero es mes gran que el primer");
+                    }
                     break;
                 case 2:
                     double a=2;
@@ -36,8 +43,10 @@ public class Main {
                     calcEquacioSegongrau(a, b, c);
                     break;
                 case 3:
-                    List<OrderLineItem> lineItems = null;
-                    Order asd = new Order(lineItems, 5.5);
+//                    REFACT: esborrat variables no utilitzades
+//                    List<OrderLineItem> lineItems = null;
+//                    Order asd = new Order(lineItems, 5.5);
+                    System.out.println("TODO.");
                     break;
                 case 0:
                     break;
@@ -47,13 +56,15 @@ public class Main {
         } while (opcio != 0);
     }
     public static boolean max(int a, int b) {
-        if(a > b) {
-            return true;
-        } else if (a == b) {
-            return false;
-        } else {
-            return false;
-        }
+//        REFACT: substitucio d'algoritme? en comptes de fer tres comprovacions, retornem si a es major que b.
+//        if(a > b) {
+//            return true;
+//        } else if (a == b) {
+//            return false;
+//        } else {
+//            return false;
+//        }
+        return a > b;
     }
     public static void calcEquacioSegongrau(double a, double b, double c) {
         double D = b * b - 4 * a * c;
@@ -72,74 +83,79 @@ public class Main {
             System.out.println("Equation has no roots");
         }
     }
-    public static class Human {
-        private String name;
-        private String age;
-        private String country;
-        private String city;
-        private String street;
-        private String house;
-        private String quarter;
-        public String obtenirAdrecaCompleta() {
-            StringBuilder result = new StringBuilder();
-            return result
-                    .append(country)
-                    .append(", ")
-                    .append(city)
-                    .append(", ")
-                    .append(street)
-                    .append(", ")
-                    .append(house)
-                    .append(" ")
-                    .append(quarter).toString();
-        }
-    }
+//    REFACT: moguda la classe a un fitxer propi
+//    public static class Human {
+//        private String name;
+//        private String age;
+//        private String country;
+//        private String city;
+//        private String street;
+//        private String house;
+//        private String quarter;
+//        public String obtenirAdrecaCompleta() {
+//            StringBuilder result = new StringBuilder();
+//            return result
+//                    .append(country)
+//                    .append(", ")
+//                    .append(city)
+//                    .append(", ")
+//                    .append(street)
+//                    .append(", ")
+//                    .append(house)
+//                    .append(" ")
+//                    .append(quarter).toString();
+//        }
+//    }
 
-    public static class Order {
-        private List<OrderLineItem> lineItems;
-        private double taxRate;
+//    REFACT: moguda la classe a un fitxer propi
+//    public static class Order {
+//        private List<OrderLineItem> lineItems;
+//        private double taxRate;
+//
+//        public Order(List<OrderLineItem> lineItems, double taxRate) {
+//            this.lineItems = lineItems;
+//            this.taxRate = taxRate;
+//        }
+//
+//        public double calculateTotalPrice() {
+//            double subtotal = 0.0;
+//            for (OrderLineItem item : lineItems) {
+//                subtotal += item.getPrice();
+//            }
+//            double tax = subtotal * taxRate;
+//            return subtotal + tax;
+//        }
+//    }
 
-        public Order(List<OrderLineItem> lineItems, double taxRate) {
-            this.lineItems = lineItems;
-            this.taxRate = taxRate;
-        }
+//    REFACT: moguda la classe a un fitxer propi
+//     public class OrderLineItem {
+//        private String productName;
+//        private int quantity;
+//        private double price;
+//
+//        public OrderLineItem(String productName, int quantity, double price) {
+//            this.productName = productName;
+//            this.quantity = quantity;
+//            this.price = price;
+//        }
+//        public double getPrice() {
+//            return price * quantity;
+//        }
+//    }
 
-        public double calculateTotalPrice() {
-            double subtotal = 0.0;
-            for (OrderLineItem item : lineItems) {
-                subtotal += item.getPrice();
-            }
-            double tax = subtotal * taxRate;
-            return subtotal + tax;
-        }
-    }
 
-     public class OrderLineItem {
-        private String productName;
-        private int quantity;
-        private double price;
-
-        public OrderLineItem(String productName, int quantity, double price) {
-            this.productName = productName;
-            this.quantity = quantity;
-            this.price = price;
-        }
-        public double getPrice() {
-            return price * quantity;
-        }
-    }
-
-    public class Customer {
-        private String firstName;
-        private String lastName;
-
-        public Customer(String firstName, String lastName) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-        }
-
-        public String getFullName() {
-            return firstName + " " + lastName;
-        }
-    }
+//    REFACT: moguda la classe a un fitxer propi
+//    public class Customer {
+//        private String firstName;
+//        private String lastName;
+//
+//        public Customer(String firstName, String lastName) {
+//            this.firstName = firstName;
+//            this.lastName = lastName;
+//        }
+//
+//        public String getFullName() {
+//            return firstName + " " + lastName;
+//        }
+//    }
 }
